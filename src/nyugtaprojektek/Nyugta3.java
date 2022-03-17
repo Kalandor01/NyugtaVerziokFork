@@ -6,15 +6,13 @@ a kedvezmény helyett legyen szervízdíj, amit hozzá kell adni a végössdzegh
 */
 public class Nyugta3
 {
-    public static void csillagok() {
-        System.out.println("********************");
+    public static void kiir_line(String jel) {
+        for (int x = 0; x < 20; x++) {
+            System.out.print(jel);
+        }
+        System.out.println();
     }
-    public static void duplaVonal() {
-        System.out.println("====================");
-    }
-    public static void szaggatottVonal() {
-        System.out.println("--------------------");
-    }
+
     
     public static void tetelek_kiir(int[] tetelek, String penznem)
     {
@@ -32,9 +30,9 @@ public class Nyugta3
         System.out.println();
         System.out.println(rovidVonal + rovidVonalValaszto + rovidVonal);
         System.out.println(" Dátum" + rovidVonalValaszto + "   Név");
-        csillagok();
+        kiir_line("*");
         System.out.printf("%11s\n", "CÉG");
-        csillagok();
+        kiir_line("*");
     }
 
     public static void main(String[] args) {
@@ -44,29 +42,29 @@ public class Nyugta3
         int szervizDijMertek = 10;
         int[] tetelek = new int[] {350, 90, 1320};
         //header
-        csillagok();
+        kiir_line("*");
         System.out.printf("%14s\n", "Nyugta 3");
-        csillagok();
+        kiir_line("*");
         tetelek_kiir(tetelek, HUF);
         //összesen
-        duplaVonal();
+        kiir_line("=");
         int osszesen = 0;
         for (int tetel : tetelek) {
             osszesen += tetel;
         }
         System.out.printf("%10s: %5d %s\n", "Összesen", osszesen, HUF);
-        szaggatottVonal();
+        kiir_line("-");
         //szervízdíj
         int szervizDij = osszesen / szervizDijMertek;
         System.out.printf("%10s: %5d %s\n", "Szervízdíj", szervizDij, HUF);
         System.out.printf("(%d%%)\n", szervizDijMertek);
-        duplaVonal();
+        kiir_line("=");
         //fizetendő
         int fizetendo = osszesen + szervizDij;
         System.out.printf("%10s:  %d %s\n", "Fizetendő", fizetendo, HUF);
         double euro = fizetendo / 350.0;
         System.out.printf("%10s%7.2f %s\n","", euro, eur);
-        szaggatottVonal();
+        kiir_line("-");
         keltezes();
     }
 
