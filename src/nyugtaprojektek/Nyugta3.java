@@ -24,60 +24,50 @@ public class Nyugta3
             System.out.printf("%10s: %5d %s\n", tetel_num, tetelek[x], penznem);
         }
     }
+    
+    public static void keltezes()
+    {
+        final String rovidVonal = "_______";
+        final String rovidVonalValaszto = "      ";
+        System.out.println();
+        System.out.println(rovidVonal + rovidVonalValaszto + rovidVonal);
+        System.out.println(" Dátum" + rovidVonalValaszto + "   Név");
+        csillagok();
+        System.out.printf("%11s\n", "CÉG");
+        csillagok();
+    }
 
     public static void main(String[] args) {
+        //változók
         final String HUF = "Ft";
+        final String eur = "\u20ac";
+        int szervizDijMertek = 10;
         int[] tetelek = new int[] {350, 90, 1320};
-        
+        //header
         csillagok();
         System.out.printf("%14s\n", "Nyugta 3");
         csillagok();
         tetelek_kiir(tetelek, HUF);
+        //összesen
         duplaVonal();
         int osszesen = 0;
         for (int tetel : tetelek) {
             osszesen += tetel;
         }
-        //System.out.printf("Összesen:   %d %s\n", osszesen, huf);
         System.out.printf("%10s: %5d %s\n", "Összesen", osszesen, HUF);
-        
         szaggatottVonal();
-        
-        int szervizDijMertek = 10;
+        //szervízdíj
         int szervizDij = osszesen / szervizDijMertek;
         System.out.printf("%10s: %5d %s\n", "Szervízdíj", szervizDij, HUF);
         System.out.printf("(%d%%)\n", szervizDijMertek);
-        
         duplaVonal();
-        
+        //fizetendő
         int fizetendo = osszesen + szervizDij;
-        //System.out.printf("Fizetendő:  %d %s\n", fizetendo, huf);
         System.out.printf("%10s:  %d %s\n", "Fizetendő", fizetendo, HUF);
         double euro = fizetendo / 350.0;
-        //HUF = "\u20ac";//EZ NEM JÓ!!!!
-        final String eur = "\u20ac";
-        //System.out.printf("            %f %s\n", euro, eur);
-        
-        /* 7.2 7 szélesen 2 tizedessel,a max: 1234.99
-        *  a %10s  egy "" -t ír ki, ezzel tolom beljebb
-        */
-        System.out.printf("%10s%7.2f %s\n","", euro, eur);//
-        
+        System.out.printf("%10s%7.2f %s\n","", euro, eur);
         szaggatottVonal();
-        
-        System.out.println("");
-        String rovidVonal = "_______";
-        System.out.print(rovidVonal);
-        String rovidVonalValaszto = "      ";
-        System.out.print(rovidVonalValaszto);
-        System.out.println(rovidVonal);
-        System.out.print(" Dátum");
-        System.out.print(rovidVonalValaszto);
-        System.out.println("   Név");
-        
-        csillagok();
-        System.out.println("        CÉG");
-        csillagok();
+        keltezes();
     }
 
 }
